@@ -26,9 +26,9 @@ module SessionsHelper
     end
 
     # Возвращает текущего вошедшего пользователя (если есть).
-    def current_user
-      @current_user ||= User.find_by(id: session[:user_id])
-    end
+    # def current_user
+    #   @current_user ||= User.find_by(id: session[:user_id])
+    # end
   
     # Возвращает true, если пользователь вошел, иначе false.
     def logged_in?
