@@ -7,16 +7,22 @@ class UsersControllerTest < ActionController::TestCase
     @other_user = users(:archer)
   end
 
+  test "should redirect index when not logged in" do
+    get :index
+    assert_redirected_to login_url
+  end
+
   test "should get new" do
     get :new
     assert_response :success
-  end
-
-  test "should get signup" do
-    get signup_path
-    assert_response :success
     assert_select "title", "Sign up | Ruby on Rails Tutorial Sample App"
   end
+
+  # test "should get signup" do
+  #   get signup_path
+  #   assert_response :success
+  #   assert_select "title", "Sign up | Ruby on Rails Tutorial Sample App"
+  # end
 
 test "should redirect edit when not logged in" do
     get :edit, params: {id: @user}
@@ -43,4 +49,6 @@ test "should redirect edit when not logged in" do
     assert flash.empty?
     assert_redirected_to root_url
   end
+
+
 end
