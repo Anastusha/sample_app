@@ -10,14 +10,20 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_path(@user)
+    #session[:forwarding_url]
+    #assert_redirect_to(session[:forwarding_url] || user_path(@user))
     name  = "Foo Bar"
     email = "foo@bar.com"
+    #assert_equal session.to_json, user_path(@user)
     patch user_path(@user), params: { user: { name:  name,
                                     email: email,
                                     password:              "",
                                     password_confirmation: "" }}
+    #assert_equal session.to_json, user_path(@user)
     assert_not flash.empty?
+   
     assert_redirected_to @user
+    #assert_equal session.to_json, user_path(@user)
     @user.reload
     assert_equal name,  @user.name
     assert_equal email, @user.email
