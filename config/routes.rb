@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   #get 'delete_user/:id' => 'users#destroy'
   get '/delete_user/:id', to: 'users#destroy', as: 'delete_user'
   resources :users
+  resources :account_activations, only: [:edit]
 end

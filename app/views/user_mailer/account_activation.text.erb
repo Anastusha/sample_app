@@ -1,0 +1,8 @@
+<%# User#account_activation
+
+<%= @greeting %№Клик-клац по ссылке для активации и find me in app/views/user_mailer/account_activation.text.erb %>
+Hi, <%= @user.name %>!
+
+Welcome to SampeApp! Click on link to activate::
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
