@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'logout'  => 'sessions#destroy'
   #get 'delete_user/:id' => 'users#destroy'
   get '/delete_user/:id', to: 'users#destroy', as: 'delete_user'
+  get '/delete_micropost/:id', to: 'microposts#destroy', as: 'delete_micropost'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
